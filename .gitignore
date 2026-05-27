@@ -1,0 +1,12 @@
+*.egg-info
+*.py[oc]
+.python-version
+.venv
+__pycache__/
+app/static/dist/
+build/
+data/
+dist/
+docs/
+node_modules/
+wheels/

@@ -1,0 +1,18 @@
+{
+    "name": "topone",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "tailwindcss -i ./app/static/src/input.css -o ./app/static/dist/style.css --watch",
+        "build": "tailwindcss -i ./app/static/src/input.css -o ./app/static/dist/style.css --minify",
+        "format": "prettier --write ."
+    },
+    "packageManager": "pnpm@10.33.2",
+    "dependencies": {
+        "@tailwindcss/cli": "4.2.4",
+        "tailwindcss": "4.2.4"
+    },
+    "devDependencies": {
+        "prettier": "3.8.3",
+        "prettier-plugin-tailwindcss": "0.8.0"
+    }
+}

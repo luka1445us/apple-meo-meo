@@ -1,0 +1,69 @@
+@import 'tailwindcss';
+
+@source '../../../*.html';
+@source './*.js';
+
+@layer base {
+    :root {
+        scroll-behavior: smooth;
+        text-rendering: optimizeLegibility;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            color-scheme: light;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            color-scheme: light;
+        }
+    }
+
+    button,
+    label,
+    summary,
+    [role='button'] {
+        @apply cursor-pointer select-none;
+    }
+
+    input[type='checkbox'],
+    input[type='radio'] {
+        @apply appearance-auto;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        @apply appearance-none;
+    }
+
+    input[type='number'] {
+        @apply appearance-none;
+        appearance: textfield;
+        -moz-appearance: textfield;
+    }
+
+    img,
+    video,
+    canvas,
+    svg {
+        @apply block h-auto max-w-full;
+    }
+
+    img {
+        @apply pointer-events-none select-none;
+    }
+
+    a {
+        @apply no-underline;
+    }
+
+    textarea {
+        @apply resize-none;
+    }
+
+    [x-cloak] {
+        @apply hidden;
+    }
+}

